@@ -111,6 +111,18 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
           </CardHeader>
 
           <CardContent className="space-y-6">
+            <div className="space-y-4 pb-4 border-b">
+              <div className="text-sm text-slate-600 text-center">
+                This price includes 1,500 MTUs
+              </div>
+              <button
+                onClick={onCalculateClick}
+                className="w-full text-blue-600 hover:text-blue-700 text-sm underline"
+              >
+                Calculate your price by MTU count
+              </button>
+            </div>
+
             <div>
               <h4 className="font-semibold text-slate-900 mb-4">Includes:</h4>
               <ul className="space-y-3">
@@ -141,16 +153,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
               </ul>
             </div>
 
-            <div className="space-y-4 pt-4 border-t">
-              <div className="text-sm text-slate-600 text-center">
-                This price includes 1,500 MTUs
-              </div>
-              <button
-                onClick={onCalculateClick}
-                className="w-full text-blue-600 hover:text-blue-700 text-sm underline"
-              >
-                Calculate your price by MTU count
-              </button>
+            <div className="pt-4 border-t">
               <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold">
                 Start Trial
               </Button>
