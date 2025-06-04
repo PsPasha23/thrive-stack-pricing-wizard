@@ -7,7 +7,7 @@ export const MTU_BREAKPOINTS = [
 ];
 
 export const MTU_TIERS: MTUTier[] = [
-  { min: 1500, max: 2500, pricePerMTU: 0.04448, discount: 32 },
+  { min: 1500, max: 2500, pricePerMTU: 0.066, discount: 0 }, // $99 / 1500 = $0.066 per MTU
   { min: 2500, max: 5000, pricePerMTU: 0.02784, discount: 37 },
   { min: 5000, max: 10000, pricePerMTU: 0.02088, discount: 30 },
   { min: 10000, max: 25000, pricePerMTU: 0.013952, discount: 33 },
