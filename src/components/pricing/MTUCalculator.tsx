@@ -8,6 +8,7 @@ import { Currency } from '@/types/pricing';
 import { formatCurrency } from '@/utils/currency';
 import { calculateMTUPricing, MTU_BREAKPOINTS } from '@/utils/mtuPricing';
 import AddOnCalculator from './AddOnCalculator';
+import CurrencySelector from './CurrencySelector';
 
 interface MTUCalculatorProps {
   currency: Currency;
@@ -22,6 +23,7 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
 }) => {
   const [selectedIndex, setSelectedIndex] = useState(5); // Default to 50K
   const [addOnTotal, setAddOnTotal] = useState(0);
+  const [selectedCurrency, setSelectedCurrency] = useState<Currency>(currency);
 
   const selectedMTU = MTU_BREAKPOINTS[selectedIndex];
   
@@ -41,9 +43,9 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
   const totalMonthlyWithAddOns = baseMonthlyTotal + addOnTotal;
   const totalAnnualWithAddOns = baseAnnualTotal + addOnTotal;
 
-  const monthlyTotal = formatCurrency(isAnnual ? totalAnnualWithAddOns : totalMonthlyWithAddOns, currency);
-  const savings = formatCurrency(calculation.annualSavings + (addOnTotal * 12 * 0.2), currency);
-  const perMTURate = formatCurrency(calculation.tier.pricePerMTU, currency);
+  const monthlyTotal = formatCurrency(isAnnual ? totalAnnualWithAddOns : totalMonthlyWithAddOns, selectedCurrency);
+  const savings = formatCurrency(calculation.annualSavings + (addOnTotal * 12 * 0.2), selectedCurrency);
+  const perMTURate = formatCurrency(calculation.tier.pricePerMTU, selectedCurrency);
 
   return (
     <div className="space-y-6">
@@ -58,6 +60,14 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
         </CardHeader>
 
         <CardContent className="space-y-8">
+          {/* Currency Selector */}
+          <div className="flex justify-center">
+            <CurrencySelector 
+              selectedCurrency={selectedCurrency}
+              onCurrencyChange={setSelectedCurrency}
+            />
+          </div>
+
           {/* Billing Toggle */}
           <div className="flex items-center justify-center gap-4">
             <span className={`text-sm ${!isAnnual ? 'font-semibold text-slate-900' : 'text-slate-600'}`}>
@@ -68,7 +78,7 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
               onCheckedChange={onBillingChange}
             />
             <span className={`text-sm ${isAnnual ? 'font-semibold text-slate-900' : 'text-slate-600'}`}>
-              Annual
+              Pay Annually
             </span>
             {isAnnual && (
               <Badge className="bg-green-100 text-green-800 ml-2">
@@ -77,38 +87,63 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
             )}
           </div>
 
-          {/* MTU Slider */}
-          <div className="space-y-6">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600 mb-2">
-                {formatMTU(selectedMTU)} MTU
+          {/* MTU Display and Rate */}
+          <div className="text-center space-y-4">
+            <div className="flex justify-center items-center gap-8 text-center">
+              <div>
+                <div className="text-4xl font-bold text-blue-600 mb-1">
+                  {formatMTU(selectedMTU)}
+                </div>
+                <div className="text-sm text-slate-500 uppercase tracking-wide">
+                  MTUs
+                </div>
               </div>
-              <div className="text-sm text-slate-600">
-                Tier: {formatMTU(calculation.tier.min)} - {formatMTU(calculation.tier.max)} MTU
+              
+              <div>
+                <div className="text-4xl font-bold text-slate-900 mb-1">
+                  {perMTURate}
+                </div>
+                <div className="text-sm text-slate-500 uppercase tracking-wide">
+                  per MTU
+                </div>
+              </div>
+              
+              <div>
+                <div className="text-4xl font-bold text-slate-900 mb-1">
+                  {monthlyTotal}
+                </div>
+                <div className="text-sm text-slate-500 uppercase tracking-wide">
+                  Monthly Price
+                </div>
               </div>
             </div>
+            
+            <div className="text-sm text-slate-600">
+              Tier: {formatMTU(calculation.tier.min)} - {formatMTU(calculation.tier.max)} MTU
+            </div>
+          </div>
 
-            <div className="px-4 space-y-4">
-              <Slider
-                value={[selectedIndex]}
-                onValueChange={(value) => setSelectedIndex(value[0])}
-                max={MTU_BREAKPOINTS.length - 1}
-                min={0}
-                step={1}
-                className="w-full"
-              />
-              
-              {/* Slider markers */}
-              <div className="flex justify-between text-xs text-slate-500 px-1">
-                {MTU_BREAKPOINTS.map((mtu, index) => (
-                  <div key={index} className="text-center">
-                    <div className="w-px h-2 bg-slate-300 mx-auto mb-1"></div>
-                    <span className={index % 2 === 0 ? '' : 'sr-only'}>
-                      {formatMTU(mtu)}
-                    </span>
-                  </div>
-                ))}
-              </div>
+          {/* MTU Slider */}
+          <div className="px-4 space-y-4">
+            <Slider
+              value={[selectedIndex]}
+              onValueChange={(value) => setSelectedIndex(value[0])}
+              max={MTU_BREAKPOINTS.length - 1}
+              min={0}
+              step={1}
+              className="w-full"
+            />
+            
+            {/* Slider markers */}
+            <div className="flex justify-between text-xs text-slate-500 px-1">
+              {MTU_BREAKPOINTS.map((mtu, index) => (
+                <div key={index} className="text-center">
+                  <div className="w-px h-2 bg-slate-300 mx-auto mb-1"></div>
+                  <span className={index % 2 === 0 ? '' : 'sr-only'}>
+                    {formatMTU(mtu)}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </CardContent>
@@ -117,7 +152,7 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
       {/* Add-on Calculator */}
       <div className="max-w-4xl mx-auto">
         <AddOnCalculator 
-          currency={currency} 
+          currency={selectedCurrency} 
           onTotalChange={setAddOnTotal}
         />
       </div>
@@ -156,7 +191,7 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
                     </div>
                     <div className="flex justify-between">
                       <span className="text-slate-600">Base Price:</span>
-                      <span className="font-semibold">{formatCurrency(baseMonthlyTotal, currency)}/mo</span>
+                      <span className="font-semibold">{formatCurrency(baseMonthlyTotal, selectedCurrency)}/mo</span>
                     </div>
                   </div>
                 </div>
@@ -167,7 +202,7 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
                     {addOnTotal > 0 && (
                       <div className="flex justify-between">
                         <span className="text-slate-600">Add-ons:</span>
-                        <span className="font-semibold">{formatCurrency(addOnTotal, currency)}/mo</span>
+                        <span className="font-semibold">{formatCurrency(addOnTotal, selectedCurrency)}/mo</span>
                       </div>
                     )}
                     <div className="flex justify-between">

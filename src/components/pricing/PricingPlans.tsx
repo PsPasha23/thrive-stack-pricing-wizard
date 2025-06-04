@@ -90,7 +90,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
 
       <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {/* Grow Plan */}
-        <Card className="relative border-2 border-blue-200 shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="relative border-2 border-blue-200 shadow-lg hover:shadow-xl transition-shadow flex flex-col">
           <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
             <Badge className="bg-blue-600 text-white px-6 py-2">
               14-Day Free Trial
@@ -110,7 +110,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
             </div>
           </CardHeader>
 
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-6 flex-grow flex flex-col">
             <div className="space-y-4 pb-4 border-b">
               <div className="text-sm text-slate-600 text-center">
                 This price includes 1,500 MTUs
@@ -123,7 +123,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
               </button>
             </div>
 
-            <div>
+            <div className="flex-grow">
               <h4 className="font-semibold text-slate-900 mb-4">Includes:</h4>
               <ul className="space-y-3">
                 {growFeatures.map((feature, index) => (
@@ -153,7 +153,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
               </ul>
             </div>
 
-            <div className="pt-4 border-t">
+            <div className="pt-4 border-t mt-auto">
               <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold">
                 Start Trial
               </Button>
@@ -162,7 +162,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
         </Card>
 
         {/* Enterprise Plan */}
-        <Card className="border-2 border-slate-200 shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="border-2 border-slate-200 shadow-lg hover:shadow-xl transition-shadow flex flex-col">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl font-bold text-slate-900">Enterprise</CardTitle>
             <div className="space-y-2 mt-4">
@@ -171,8 +171,8 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
             </div>
           </CardHeader>
 
-          <CardContent className="space-y-6">
-            <div>
+          <CardContent className="space-y-6 flex-grow flex flex-col">
+            <div className="flex-grow">
               <h4 className="font-semibold text-slate-900 mb-4">Enterprise Features:</h4>
               <ul className="space-y-3">
                 {enterpriseFeatures.map((feature, index) => (
@@ -199,9 +199,9 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
               </ul>
             </div>
 
-            <div className="pt-4 border-t">
+            <div className="pt-4 border-t mt-auto">
               <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white py-3 text-lg font-semibold">
-                Contact Sales
+                Schedule a call
               </Button>
             </div>
           </CardContent>

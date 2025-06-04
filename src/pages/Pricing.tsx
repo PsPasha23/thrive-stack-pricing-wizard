@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import PricingPlans from '@/components/pricing/PricingPlans';
 import MTUCalculator from '@/components/pricing/MTUCalculator';
-import CurrencySelector from '@/components/pricing/CurrencySelector';
 import ComparisonSection from '@/components/pricing/ComparisonSection';
 import { Currency } from '@/types/pricing';
 
@@ -22,10 +21,6 @@ const Pricing = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold text-slate-900">ThriveStack</h1>
-            <CurrencySelector 
-              selectedCurrency={selectedCurrency}
-              onCurrencyChange={setSelectedCurrency}
-            />
           </div>
         </div>
       </div>
