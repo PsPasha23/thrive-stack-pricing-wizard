@@ -10,11 +10,16 @@ import { calculateMTUPricing, MTU_BREAKPOINTS, MTU_TIERS } from '@/utils/mtuPric
 
 interface MTUCalculatorProps {
   currency: Currency;
+  isAnnual: boolean;
+  onBillingChange: (isAnnual: boolean) => void;
 }
 
-const MTUCalculator: React.FC<MTUCalculatorProps> = ({ currency }) => {
+const MTUCalculator: React.FC<MTUCalculatorProps> = ({ 
+  currency, 
+  isAnnual, 
+  onBillingChange 
+}) => {
   const [selectedIndex, setSelectedIndex] = useState(5); // Default to 50K
-  const [isAnnual, setIsAnnual] = useState(false);
 
   const selectedMTU = MTU_BREAKPOINTS[selectedIndex];
   
@@ -53,7 +58,7 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({ currency }) => {
           </span>
           <Switch
             checked={isAnnual}
-            onCheckedChange={setIsAnnual}
+            onCheckedChange={onBillingChange}
           />
           <span className={`text-sm ${isAnnual ? 'font-semibold text-slate-900' : 'text-slate-600'}`}>
             Annual
@@ -76,7 +81,7 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({ currency }) => {
             </div>
           </div>
 
-          <div className="px-4">
+          <div className="px-4 space-y-4">
             <Slider
               value={[selectedIndex]}
               onValueChange={(value) => setSelectedIndex(value[0])}
@@ -85,11 +90,18 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({ currency }) => {
               step={1}
               className="w-full"
             />
-          </div>
-
-          <div className="flex justify-between text-xs text-slate-500 px-4">
-            <span>{formatMTU(MTU_BREAKPOINTS[0])}</span>
-            <span>{formatMTU(MTU_BREAKPOINTS[MTU_BREAKPOINTS.length - 1])}</span>
+            
+            {/* Slider markers */}
+            <div className="flex justify-between text-xs text-slate-500 px-1">
+              {MTU_BREAKPOINTS.map((mtu, index) => (
+                <div key={index} className="text-center">
+                  <div className="w-px h-2 bg-slate-300 mx-auto mb-1"></div>
+                  <span className={index % 2 === 0 ? '' : 'sr-only'}>
+                    {formatMTU(mtu)}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -105,7 +117,7 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({ currency }) => {
               </div>
               {isAnnual && (
                 <div className="text-sm text-green-600 mt-2">
-                  Save {savings} annually
+                  Save {savings} annually (20% discount)
                 </div>
               )}
             </CardContent>

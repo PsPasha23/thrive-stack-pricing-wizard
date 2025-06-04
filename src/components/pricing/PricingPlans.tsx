@@ -55,11 +55,11 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
           <CardTitle className="text-2xl font-bold text-slate-900">Grow Plan</CardTitle>
           <div className="space-y-2 mt-4">
             <div className="text-4xl font-bold text-slate-900">
-              {monthlyPrice}
+              Starts at {monthlyPrice}
               <span className="text-lg font-normal text-slate-600">/month</span>
             </div>
             <div className="text-sm text-slate-600">
-              Monthly billing • Save 20% annually ({annualPrice}/month)
+              Monthly billing • Save 20% annually (starts at {annualPrice}/month)
             </div>
           </div>
         </CardHeader>
