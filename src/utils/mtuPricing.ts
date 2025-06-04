@@ -2,12 +2,11 @@
 import { MTUTier, PricingCalculation } from '@/types/pricing';
 
 export const MTU_BREAKPOINTS = [
-  1000, 2500, 5000, 10000, 25000, 50000, 75000, 100000,
+  1500, 2500, 5000, 10000, 25000, 50000, 75000, 100000,
   125000, 150000, 175000, 200000, 225000, 250000, 275000, 300000
 ];
 
 export const MTU_TIERS: MTUTier[] = [
-  { min: 1000, max: 1500, pricePerMTU: 0.06600 },
   { min: 1500, max: 2500, pricePerMTU: 0.04448, discount: 32 },
   { min: 2500, max: 5000, pricePerMTU: 0.02784, discount: 37 },
   { min: 5000, max: 10000, pricePerMTU: 0.02088, discount: 30 },

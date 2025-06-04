@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
@@ -21,7 +20,7 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
   isAnnual, 
   onBillingChange 
 }) => {
-  const [selectedIndex, setSelectedIndex] = useState(5); // Default to 50K
+  const [selectedIndex, setSelectedIndex] = useState(0); // Default to 1.5K (first index)
   const [addOnTotal, setAddOnTotal] = useState(0);
   const [selectedCurrency, setSelectedCurrency] = useState<Currency>(currency);
 
@@ -80,11 +79,9 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
             <span className={`text-sm ${isAnnual ? 'font-semibold text-slate-900' : 'text-slate-600'}`}>
               Pay Annually
             </span>
-            {isAnnual && (
-              <Badge className="bg-green-100 text-green-800 ml-2">
-                Save 20%
-              </Badge>
-            )}
+            <Badge className="bg-green-100 text-green-800 ml-2">
+              Save 20%
+            </Badge>
           </div>
 
           {/* MTU Display and Rate */}

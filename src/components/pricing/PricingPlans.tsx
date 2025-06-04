@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -81,11 +80,9 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
         <span className={`text-sm ${isAnnual ? 'font-semibold text-slate-900' : 'text-slate-600'}`}>
           Annual
         </span>
-        {isAnnual && (
-          <Badge className="bg-green-100 text-green-800 ml-2">
-            Save 20%
-          </Badge>
-        )}
+        <Badge className="bg-green-100 text-green-800 ml-2">
+          Save 20%
+        </Badge>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">

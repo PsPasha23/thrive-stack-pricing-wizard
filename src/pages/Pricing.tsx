@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import PricingPlans from '@/components/pricing/PricingPlans';
 import MTUCalculator from '@/components/pricing/MTUCalculator';
 import ComparisonSection from '@/components/pricing/ComparisonSection';
+import CurrencySelector from '@/components/pricing/CurrencySelector';
 import { Currency } from '@/types/pricing';
 
 const Pricing = () => {
@@ -31,9 +32,17 @@ const Pricing = () => {
           <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
             Simple, Transparent Pricing
           </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
             Scale your analytics without the complexity. Choose the plan that fits your growth stage.
           </p>
+          
+          {/* Currency Selector */}
+          <div className="flex justify-center">
+            <CurrencySelector 
+              selectedCurrency={selectedCurrency}
+              onCurrencyChange={setSelectedCurrency}
+            />
+          </div>
         </div>
 
         {/* Pricing Plans */}
