@@ -2,6 +2,10 @@
 import React from 'react';
 
 const Footer: React.FC = () => {
+  const scrollToPricing = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-white border-t border-slate-200 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -39,7 +43,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Capabilities */}
-          <div>
+          <div className="text-right">
             <h3 className="font-semibold text-slate-900 mb-4">Capabilities</h3>
             <ul className="space-y-3 text-sm text-slate-600">
               <li><a href="#" className="hover:text-slate-900">Build Self-Serve</a></li>
@@ -49,14 +53,48 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Resources */}
-          <div>
+          <div className="text-right">
             <h3 className="font-semibold text-slate-900 mb-4">Resources</h3>
             <ul className="space-y-3 text-sm text-slate-600">
-              <li><a href="#" className="hover:text-slate-900">Blog</a></li>
-              <li><a href="#" className="hover:text-slate-900">Podcasts</a></li>
+              <li>
+                <a 
+                  href="https://www.thrivestack.ai/blogs" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-slate-900"
+                >
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://www.hybridgtm.com/podcast" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-slate-900"
+                >
+                  Podcasts
+                </a>
+              </li>
               <li><a href="#" className="hover:text-slate-900">Community</a></li>
-              <li><a href="#" className="hover:text-slate-900">Changelog</a></li>
-              <li><a href="#" className="hover:text-slate-900">Pricing</a></li>
+              <li>
+                <a 
+                  href="https://www.thrivestack.ai/changelog" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-slate-900"
+                >
+                  Changelog
+                </a>
+              </li>
+              <li>
+                <button 
+                  onClick={scrollToPricing}
+                  className="hover:text-slate-900 cursor-pointer"
+                >
+                  Pricing
+                </button>
+              </li>
             </ul>
           </div>
 

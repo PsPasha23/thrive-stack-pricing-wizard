@@ -110,14 +110,14 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
           <CardContent className="space-y-6 flex-grow flex flex-col">
             <div className="space-y-4 pb-4 border-b">
               <div className="text-sm text-slate-600 text-center">
-                This price includes 1,500 MTUs
+                Includes 1,500 MTUs • 
+                <button
+                  onClick={onCalculateClick}
+                  className="text-blue-600 hover:text-blue-700 ml-1 underline"
+                >
+                  Calculate your price by MTU count
+                </button>
               </div>
-              <button
-                onClick={onCalculateClick}
-                className="w-full text-blue-600 hover:text-blue-700 text-sm underline"
-              >
-                Calculate your price by MTU count
-              </button>
             </div>
 
             <div className="flex-grow">
@@ -173,7 +173,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
 
           <CardContent className="space-y-6 flex-grow flex flex-col">
             <div className="flex-grow">
-              <h4 className="font-semibold text-slate-900 mb-4">Enterprise Features:</h4>
+              <h4 className="font-semibold text-slate-900 mb-4">Includes:</h4>
               <ul className="space-y-2">
                 {enterpriseFeatures.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">

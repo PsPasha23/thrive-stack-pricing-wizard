@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Check, X } from 'lucide-react';
+import { Check, X, ArrowDown } from 'lucide-react';
 
 const ComparisonSection: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -225,24 +225,34 @@ const ComparisonSection: React.FC = () => {
         </Dialog>
       </div>
 
-      {/* FAQ Section */}
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-slate-600">
+      {/* FAQ Section with new styling */}
+      <div className="max-w-4xl mx-auto bg-gray-50 rounded-lg p-8">
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <h2 className="text-3xl font-bold text-slate-900 mb-2">
+              Frequently Asked Questions
+            </h2>
+            <div className="w-16 h-1 bg-purple-600 mb-4"></div>
+            <p className="text-slate-600">
+              Get started for free
+            </p>
+          </div>
+          <Button 
+            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold"
+            onClick={() => window.open('https://app.thrivestack.ai/auth/customer-analytics/sign-up', '_blank')}
+          >
             Get started for free
-          </p>
+          </Button>
         </div>
 
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="single" collapsible className="w-full space-y-2">
           {faqData.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left">
-                {faq.question}
+            <AccordionItem key={index} value={`item-${index}`} className="bg-white rounded-lg border-0 shadow-sm">
+              <AccordionTrigger className="text-left px-6 py-4 hover:no-underline data-[state=open]:rounded-t-lg data-[state=closed]:rounded-lg">
+                <span className="text-slate-700 font-medium">{faq.question}</span>
+                <ArrowDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
               </AccordionTrigger>
-              <AccordionContent className="text-slate-600 whitespace-pre-line">
+              <AccordionContent className="text-slate-600 whitespace-pre-line px-6 pb-4 pt-0">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
