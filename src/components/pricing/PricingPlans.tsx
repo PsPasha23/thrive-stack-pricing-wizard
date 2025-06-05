@@ -1,9 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Check } from 'lucide-react';
 import { Currency } from '@/types/pricing';
 import { formatCurrency } from '@/utils/currency';
@@ -21,6 +22,8 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
   onBillingChange,
   onCalculateClick,
 }) => {
+  const [selectedAddOns, setSelectedAddOns] = useState<boolean[]>([false, false, false]);
+
   const growFeatures = [
     'Track up to 300,000 MTUs',
     'Account-Level Insights',
@@ -65,6 +68,12 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
   const discountedPrice = baseMonthlyPrice * 0.8; // 20% discount for annual
   const displayPrice = isAnnual ? discountedPrice : baseMonthlyPrice;
   const monthlyPrice = formatCurrency(displayPrice, currency);
+
+  const handleAddOnChange = (index: number, checked: boolean) => {
+    const newSelectedAddOns = [...selectedAddOns];
+    newSelectedAddOns[index] = checked;
+    setSelectedAddOns(newSelectedAddOns);
+  };
 
   return (
     <div className="space-y-6">
@@ -137,7 +146,11 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
               <ul className="space-y-2">
                 {addOns.map((addOn, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="w-4 h-4 border-2 border-slate-300 rounded flex-shrink-0 mt-0.5"></div>
+                    <Checkbox
+                      checked={selectedAddOns[index]}
+                      onCheckedChange={(checked) => handleAddOnChange(index, checked as boolean)}
+                      className="mt-0.5"
+                    />
                     <div className="flex-1">
                       <div className="flex justify-between items-start">
                         <span className="text-sm font-medium text-slate-700">{addOn.name}</span>
