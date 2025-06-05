@@ -4,7 +4,6 @@ import PricingPlans from '@/components/pricing/PricingPlans';
 import MTUCalculator from '@/components/pricing/MTUCalculator';
 import ComparisonSection from '@/components/pricing/ComparisonSection';
 import CurrencySelector from '@/components/pricing/CurrencySelector';
-import Footer from '@/components/layout/Footer';
 import { Currency } from '@/types/pricing';
 
 const Pricing = () => {
@@ -68,9 +67,6 @@ const Pricing = () => {
           <ComparisonSection />
         </div>
       </div>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 };
