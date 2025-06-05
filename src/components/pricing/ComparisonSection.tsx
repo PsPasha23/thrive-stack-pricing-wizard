@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -148,16 +147,15 @@ const ComparisonSection: React.FC = () => {
           See how ThriveStack stacks up against other analytics platforms in features and pricing.
         </p>
 
+        <Button 
+          variant="outline" 
+          className="px-8 py-3 text-lg"
+          onClick={() => window.open('/pricing-calculator', '_self')}
+        >
+          Compare pricing with other analytics tools
+        </Button>
+
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
-          <DialogTrigger asChild>
-            <Button 
-              variant="outline" 
-              className="px-8 py-3 text-lg"
-              onClick={() => window.open('https://preview--thrive-stack-insights-calculator.lovable.app/', '_blank')}
-            >
-              Compare pricing with other analytics tools
-            </Button>
-          </DialogTrigger>
           <DialogContent className="max-w-6xl max-h-[80vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="text-2xl font-bold text-center">
