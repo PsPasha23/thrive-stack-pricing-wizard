@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
@@ -6,8 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { Currency } from '@/types/pricing';
 import { formatCurrency } from '@/utils/currency';
 import { calculateMTUPricing, MTU_BREAKPOINTS } from '@/utils/mtuPricing';
-import AddOnCalculator from './AddOnCalculator';
 import CurrencySelector from './CurrencySelector';
+import AllAddOnsCalculator from './AllAddOnsCalculator';
 
 interface MTUCalculatorProps {
   currency: Currency;
@@ -84,9 +85,9 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
             </Badge>
           </div>
 
-          {/* MTU Display and Rate */}
+          {/* MTU Display and Rate - Updated Layout */}
           <div className="text-center space-y-4">
-            <div className="flex justify-center items-center gap-8 text-center">
+            <div className="flex justify-center items-center gap-12 text-center">
               <div>
                 <div className="text-4xl font-bold text-blue-600 mb-1">
                   {formatMTU(selectedMTU)}
@@ -97,20 +98,14 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
               </div>
               
               <div>
-                <div className="text-4xl font-bold text-slate-900 mb-1">
-                  {perMTURate}
-                </div>
-                <div className="text-sm text-slate-500 uppercase tracking-wide">
-                  per MTU
-                </div>
-              </div>
-              
-              <div>
-                <div className="text-4xl font-bold text-slate-900 mb-1">
+                <div className="text-5xl font-bold text-slate-900 mb-1">
                   {monthlyTotal}
                 </div>
-                <div className="text-sm text-slate-500 uppercase tracking-wide">
+                <div className="text-sm text-slate-500 uppercase tracking-wide mb-2">
                   Monthly Price
+                </div>
+                <div className="text-lg text-slate-600">
+                  {perMTURate} per MTU
                 </div>
               </div>
             </div>
@@ -146,9 +141,9 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
         </CardContent>
       </Card>
 
-      {/* Add-on Calculator */}
+      {/* All Add-ons Calculator */}
       <div className="max-w-4xl mx-auto">
-        <AddOnCalculator 
+        <AllAddOnsCalculator 
           currency={selectedCurrency} 
           onTotalChange={setAddOnTotal}
         />
@@ -220,7 +215,10 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
             </div>
 
             <div className="pt-6 border-t border-slate-200">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl">
+              <button 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl"
+                onClick={() => window.open('https://app.thrivestack.ai/auth/customer-analytics/sign-up', '_blank')}
+              >
                 Start Your 14-Day Free Trial
               </button>
               <p className="text-sm text-slate-600 mt-3">

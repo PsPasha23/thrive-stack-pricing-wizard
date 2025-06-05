@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -22,14 +23,13 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
 }) => {
   const growFeatures = [
     'Track up to 300,000 MTUs',
-    'Account-Level Insights – Understand key metrics at the account level.',
-    'Full Journey Tracking – Map customer interactions from first-touch to loyalty.',
-    'Growth Leak Detection – Pinpoint inefficiencies impacting revenue.',
-    'Optimized for Scale – Purpose-built for growth-focused analytics.',
-    'Analytics Tool Consolidation – Replace Marketing, Product, CSM, and CDP tools.',
-    'Efficient Event Collection – Cut 95% of unnecessary tracking data.',
-    'Guided Setup for Instant Results – Opinionated implementation for fast impact.',
-    'Transparent Pricing – Scales flexibly with usage.',
+    'Account-Level Insights',
+    'Full Journey Tracking',
+    'Growth Leak Detection',
+    'Analytics Consolidation',
+    'Efficient Event Collection',
+    'Guided Setup for Results',
+    'Transparent Pricing',
   ];
 
   const enterpriseFeatures = [
@@ -47,17 +47,17 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
     {
       name: 'Abuse Detection',
       price: 25,
-      description: 'Protect your analytics from spam and abuse with our advanced detection system. Automatically identify and filter out suspicious traffic.',
+      description: 'Protect analytics from spam and abuse with advanced detection system.',
     },
     {
       name: 'Economic Buyer',
       price: 25,
-      description: 'Automatically identify up to 500 key decision-makers in an organization with the authority to approve expenditures and make financial decisions.',
+      description: 'Identify up to 500 key decision-makers with financial authority.',
     },
     {
       name: 'Data Retention',
       price: 25,
-      description: 'Access and analyze your data for up to one year with our extended retention add-on',
+      description: 'Access and analyze your data for up to one year.',
     },
   ];
 
@@ -122,28 +122,28 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
 
             <div className="flex-grow">
               <h4 className="font-semibold text-slate-900 mb-4">Includes:</h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {growFeatures.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
                     <span className="text-sm text-slate-700">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div>
+            <div className="border-t pt-4">
               <h4 className="font-semibold text-slate-900 mb-4">Add-ons:</h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {addOns.map((addOn, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="w-5 h-5 border-2 border-slate-300 rounded flex-shrink-0 mt-0.5"></div>
+                    <div className="w-4 h-4 border-2 border-slate-300 rounded flex-shrink-0 mt-0.5"></div>
                     <div className="flex-1">
                       <div className="flex justify-between items-start">
                         <span className="text-sm font-medium text-slate-700">{addOn.name}</span>
                         <span className="text-sm text-slate-600">{formatCurrency(addOn.price, currency)}/mo</span>
                       </div>
-                      <p className="text-xs text-slate-600 mt-1">{addOn.description}</p>
+                      <p className="text-xs text-slate-500 mt-1">{addOn.description}</p>
                     </div>
                   </li>
                 ))}
@@ -151,7 +151,10 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
             </div>
 
             <div className="pt-4 border-t mt-auto">
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold">
+              <Button 
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold"
+                onClick={() => window.open('https://app.thrivestack.ai/auth/customer-analytics/sign-up', '_blank')}
+              >
                 Start Trial
               </Button>
             </div>
@@ -171,25 +174,25 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
           <CardContent className="space-y-6 flex-grow flex flex-col">
             <div className="flex-grow">
               <h4 className="font-semibold text-slate-900 mb-4">Enterprise Features:</h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {enterpriseFeatures.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
                     <span className="text-sm text-slate-700">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div>
+            <div className="border-t pt-4">
               <h4 className="font-semibold text-slate-900 mb-4">All Add-ons Included:</h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {addOns.map((addOn, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
                     <div className="flex-1">
                       <span className="text-sm font-medium text-slate-700">{addOn.name}</span>
-                      <p className="text-xs text-slate-600 mt-1">{addOn.description}</p>
+                      <p className="text-xs text-slate-500 mt-1">{addOn.description}</p>
                     </div>
                   </li>
                 ))}
