@@ -10,8 +10,8 @@ const Footer: React.FC = () => {
     <footer className="bg-white border-t border-slate-200 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="space-y-4">
+          {/* Company Info - Left aligned within its section */}
+          <div className="space-y-4 text-left">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">TS</span>
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Capabilities */}
+          {/* Capabilities - Right aligned within its section */}
           <div className="text-right">
             <h3 className="font-semibold text-slate-900 mb-4">Capabilities</h3>
             <ul className="space-y-3 text-sm text-slate-600">
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Resources - Right aligned within its section */}
           <div className="text-right">
             <h3 className="font-semibold text-slate-900 mb-4">Resources</h3>
             <ul className="space-y-3 text-sm text-slate-600">

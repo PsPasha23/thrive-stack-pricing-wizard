@@ -8,7 +8,7 @@ import { Currency } from '@/types/pricing';
 import { formatCurrency } from '@/utils/currency';
 import { calculateMTUPricing, MTU_BREAKPOINTS } from '@/utils/mtuPricing';
 import CurrencySelector from './CurrencySelector';
-import AllAddOnsCalculator from './AllAddOnsCalculator';
+import CollapsibleAddOnsCalculator from './CollapsibleAddOnsCalculator';
 
 interface MTUCalculatorProps {
   currency: Currency;
@@ -97,21 +97,20 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
                 </div>
               </div>
               
-              <div>
+              <div className="flex-1 text-center">
                 <div className="text-5xl font-bold text-slate-900 mb-1">
                   {monthlyTotal}
                 </div>
-                <div className="text-sm text-slate-500 uppercase tracking-wide mb-2">
+                <div className="text-sm text-slate-500 uppercase tracking-wide">
                   Monthly Price
                 </div>
+              </div>
+
+              <div className="text-right">
                 <div className="text-lg text-slate-600">
                   {perMTURate} per MTU
                 </div>
               </div>
-            </div>
-            
-            <div className="text-sm text-slate-600">
-              Tier: {formatMTU(calculation.tier.min)} - {formatMTU(calculation.tier.max)} MTU
             </div>
           </div>
 
@@ -141,9 +140,9 @@ const MTUCalculator: React.FC<MTUCalculatorProps> = ({
         </CardContent>
       </Card>
 
-      {/* All Add-ons Calculator */}
+      {/* Collapsible Add-ons Calculator */}
       <div className="max-w-4xl mx-auto">
-        <AllAddOnsCalculator 
+        <CollapsibleAddOnsCalculator 
           currency={selectedCurrency} 
           onTotalChange={setAddOnTotal}
         />

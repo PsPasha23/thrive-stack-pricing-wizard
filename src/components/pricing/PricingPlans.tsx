@@ -67,8 +67,8 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
   const monthlyPrice = formatCurrency(displayPrice, currency);
 
   return (
-    <div className="space-y-8">
-      {/* Billing Toggle */}
+    <div className="space-y-6">
+      {/* Billing Toggle - Reduced gap */}
       <div className="flex items-center justify-center gap-4">
         <span className={`text-sm ${!isAnnual ? 'font-semibold text-slate-900' : 'text-slate-600'}`}>
           Monthly
@@ -164,7 +164,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
         {/* Enterprise Plan */}
         <Card className="border-2 border-slate-200 shadow-lg hover:shadow-xl transition-shadow flex flex-col">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold text-slate-900">Enterprise</CardTitle>
+            <CardTitle className="text-2xl font-bold text-slate-900">Enterprise Plan</CardTitle>
             <div className="space-y-2 mt-4">
               <div className="text-4xl font-bold text-slate-900">Custom</div>
               <div className="text-sm text-slate-600">Tailored to your needs</div>
@@ -172,6 +172,12 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
           </CardHeader>
 
           <CardContent className="space-y-6 flex-grow flex flex-col">
+            <div className="pb-4 border-b">
+              <div className="text-sm text-slate-600 text-center">
+                Contact us for custom pricing
+              </div>
+            </div>
+
             <div className="flex-grow">
               <h4 className="font-semibold text-slate-900 mb-4">Includes:</h4>
               <ul className="space-y-2">

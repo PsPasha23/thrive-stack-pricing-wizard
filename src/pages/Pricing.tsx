@@ -33,12 +33,12 @@ const Pricing = () => {
           <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
             Simple, Transparent Pricing
           </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-6">
             Scale your analytics without the complexity. Choose the plan that fits your growth stage.
           </p>
           
           {/* Currency Selector */}
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-4">
             <CurrencySelector 
               selectedCurrency={selectedCurrency}
               onCurrencyChange={setSelectedCurrency}
