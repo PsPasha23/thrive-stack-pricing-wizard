@@ -150,7 +150,7 @@ const ComparisonSection: React.FC = () => {
         <Button 
           variant="outline" 
           className="px-8 py-3 text-lg"
-          onClick={() => window.open('/pricing-calculator', '_self')}
+          onClick={() => window.open('https://preview--thrive-stack-insights-calculator.lovable.app/', '_blank')}
         >
           Compare pricing with other analytics tools
         </Button>
