@@ -1,8 +1,6 @@
+
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Collapsible from 'react-collapsible';
 import { Check, X } from 'lucide-react';
 
 const ComparisonSection: React.FC = () => {
@@ -147,80 +145,91 @@ const ComparisonSection: React.FC = () => {
           See how ThriveStack stacks up against other analytics platforms in features and pricing.
         </p>
 
-        <Button 
-          variant="outline" 
-          className="px-8 py-3 text-lg"
+        <button 
+          className="border border-gray-300 hover:border-gray-400 bg-white hover:bg-gray-50 text-gray-900 px-8 py-3 text-lg rounded-md transition-colors duration-200"
           onClick={() => window.open('https://preview--thrive-stack-insights-calculator.lovable.app/', '_blank')}
         >
           Compare pricing with other analytics tools
-        </Button>
+        </button>
 
-        <Dialog open={isOpen} onOpenChange={setIsOpen}>
-          <DialogContent className="max-w-6xl max-h-[80vh] overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-bold text-center">
-                ThriveStack vs Competition
-              </DialogTitle>
-            </DialogHeader>
-            
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b">
-                    <th className="text-left py-4 px-2 font-semibold">Feature</th>
-                    {competitors.map((competitor) => (
-                      <th
-                        key={competitor.name}
-                        className={`text-center py-4 px-2 font-semibold ${
-                          competitor.highlight
-                            ? 'bg-blue-50 border-l-2 border-r-2 border-blue-200'
-                            : ''
-                        }`}
-                      >
-                        <div>{competitor.name}</div>
-                        <div className="text-sm font-normal text-slate-600 mt-1">
-                          {competitor.pricing}
-                        </div>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.keys(competitors[0].features).map((feature) => (
-                    <tr key={feature} className="border-b">
-                      <td className="py-3 px-2 text-sm font-medium">{feature}</td>
-                      {competitors.map((competitor) => (
-                        <td
-                          key={competitor.name}
-                          className={`text-center py-3 px-2 ${
-                            competitor.highlight
-                              ? 'bg-blue-50 border-l-2 border-r-2 border-blue-200'
-                              : ''
-                          }`}
-                        >
-                          {competitor.features[feature as keyof typeof competitor.features] ? (
-                            <Check className="w-5 h-5 text-green-500 mx-auto" />
-                          ) : (
-                            <X className="w-5 h-5 text-red-400 mx-auto" />
-                          )}
-                        </td>
+        {isOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-lg max-w-6xl max-h-[80vh] overflow-y-auto w-full">
+              <div className="p-6 border-b">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-2xl font-bold text-center flex-1">
+                    ThriveStack vs Competition
+                  </h2>
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="text-gray-400 hover:text-gray-600 text-xl font-bold w-6 h-6 flex items-center justify-center"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left py-4 px-2 font-semibold">Feature</th>
+                        {competitors.map((competitor) => (
+                          <th
+                            key={competitor.name}
+                            className={`text-center py-4 px-2 font-semibold ${
+                              competitor.highlight
+                                ? 'bg-blue-50 border-l-2 border-r-2 border-blue-200'
+                                : ''
+                            }`}
+                          >
+                            <div>{competitor.name}</div>
+                            <div className="text-sm font-normal text-slate-600 mt-1">
+                              {competitor.pricing}
+                            </div>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Object.keys(competitors[0].features).map((feature) => (
+                        <tr key={feature} className="border-b">
+                          <td className="py-3 px-2 text-sm font-medium">{feature}</td>
+                          {competitors.map((competitor) => (
+                            <td
+                              key={competitor.name}
+                              className={`text-center py-3 px-2 ${
+                                competitor.highlight
+                                  ? 'bg-blue-50 border-l-2 border-r-2 border-blue-200'
+                                  : ''
+                              }`}
+                            >
+                              {competitor.features[feature as keyof typeof competitor.features] ? (
+                                <Check className="w-5 h-5 text-green-500 mx-auto" />
+                              ) : (
+                                <X className="w-5 h-5 text-red-400 mx-auto" />
+                              )}
+                            </td>
+                          ))}
+                        </tr>
                       ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                    </tbody>
+                  </table>
+                </div>
 
-            <div className="text-center mt-6">
-              <Button 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
-                onClick={() => setIsOpen(false)}
-              >
-                Start Your Free Trial
-              </Button>
+                <div className="text-center mt-6">
+                  <button 
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md transition-colors duration-200"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Start Your Free Trial
+                  </button>
+                </div>
+              </div>
             </div>
-          </DialogContent>
-        </Dialog>
+          </div>
+        )}
       </div>
 
       {/* FAQ Section with updated styling */}
@@ -232,26 +241,31 @@ const ComparisonSection: React.FC = () => {
             </h2>
             <div className="w-16 h-1 bg-purple-600 mb-4"></div>
           </div>
-          <Button 
-            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold"
+          <button 
+            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
             onClick={() => window.open('https://app.thrivestack.ai/auth/customer-analytics/sign-up', '_blank')}
           >
             Get started for free
-          </Button>
+          </button>
         </div>
 
-        <Accordion type="single" collapsible className="w-full space-y-2">
+        <div className="space-y-2">
           {faqData.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="bg-white rounded-lg border-0 shadow-sm">
-              <AccordionTrigger className="text-left px-6 py-4 hover:no-underline data-[state=open]:rounded-t-lg data-[state=closed]:rounded-lg [&>svg]:hidden">
-                <span className="text-slate-700 font-medium">{faq.question}</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-slate-600 whitespace-pre-line px-6 pb-4 pt-0">
+            <div key={index} className="bg-white rounded-lg border-0 shadow-sm">
+              <Collapsible
+                trigger={
+                  <div className="text-left px-6 py-4 cursor-pointer hover:bg-gray-50 rounded-lg">
+                    <span className="text-slate-700 font-medium">{faq.question}</span>
+                  </div>
+                }
+                triggerClassName="w-full"
+                contentClassName="text-slate-600 whitespace-pre-line px-6 pb-4 pt-0"
+              >
                 {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
+              </Collapsible>
+            </div>
           ))}
-        </Accordion>
+        </div>
       </div>
     </div>
   );
