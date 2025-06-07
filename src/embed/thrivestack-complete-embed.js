@@ -1,3 +1,4 @@
+
 (function() {
   'use strict';
 
@@ -198,16 +199,26 @@
     .thrivestack-currency-select {
       padding: 0.5rem 1rem;
       border: 1px solid hsl(214.3 31.8% 91.4%);
-      border-radius: calc(0.5rem - 2px);
+      border-radius: calc(0.375rem - 1px);
       background: hsl(0 0% 100%);
       font-size: 0.875rem;
+      font-weight: 500;
       color: hsl(222.2 84% 4.9%);
       cursor: pointer;
-      transition: border-color 0.2s ease;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      min-width: 120px;
     }
     
     .thrivestack-currency-select:hover {
-      border-color: hsl(217.2 91.2% 59.8%);
+      border-color: hsl(215.4 16.3% 56.9%);
+      background: hsl(210 40% 98%);
+    }
+    
+    .thrivestack-currency-select:focus {
+      outline: 2px solid hsl(221.2 83.2% 53.3%);
+      outline-offset: 2px;
+      border-color: hsl(221.2 83.2% 53.3%);
     }
     
     .thrivestack-billing-toggle {
@@ -396,6 +407,7 @@
       position: relative;
       display: flex;
       flex-direction: column;
+      overflow: visible;
     }
     
     .thrivestack-card.featured {
@@ -409,7 +421,7 @@
     
     .thrivestack-card-badge {
       position: absolute;
-      top: -0.75rem;
+      top: -0.875rem;
       left: 50%;
       transform: translateX(-50%);
       background: hsl(221.2 83.2% 53.3%);
@@ -418,11 +430,15 @@
       border-radius: 9999px;
       font-size: 0.875rem;
       font-weight: 600;
+      white-space: nowrap;
+      z-index: 10;
+      box-shadow: 0 2px 4px 0 rgb(0 0 0 / 0.1);
     }
     
     .thrivestack-card-header {
       text-align: center;
       margin-bottom: 2rem;
+      margin-top: 0.5rem;
     }
     
     .thrivestack-card-title {
@@ -899,6 +915,11 @@
 
       .thrivestack-faq-title {
         font-size: 1.875rem;
+      }
+      
+      .thrivestack-card-badge {
+        font-size: 0.75rem;
+        padding: 0.375rem 1rem;
       }
     }
   `;
