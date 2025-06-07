@@ -1,4 +1,3 @@
-
 (function() {
   'use strict';
 
@@ -152,20 +151,20 @@
     return total;
   }
 
-  // CSS Styles
+  // CSS Styles - Updated to match project design system
   const styles = `
     .thrivestack-pricing {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
       line-height: 1.5;
-      color: #0f172a;
-      background: linear-gradient(135deg, #f8fafc 0%, #dbeafe 100%);
+      color: hsl(222.2 84% 4.9%);
+      background: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(214 100% 97%) 100%);
       min-height: 100vh;
       margin: 0;
       padding: 0;
     }
     
     .thrivestack-container {
-      max-width: 1280px;
+      max-width: 80rem;
       margin: 0 auto;
       padding: 4rem 1rem;
     }
@@ -176,16 +175,16 @@
     }
     
     .thrivestack-hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.25rem, 4vw, 3.75rem);
       font-weight: 700;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       margin-bottom: 1.5rem;
       line-height: 1.1;
     }
     
     .thrivestack-hero p {
       font-size: 1.25rem;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
       max-width: 48rem;
       margin: 0 auto 2rem;
     }
@@ -193,22 +192,22 @@
     .thrivestack-currency-selector {
       display: flex;
       justify-content: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
     
     .thrivestack-currency-select {
       padding: 0.5rem 1rem;
-      border: 2px solid #e2e8f0;
-      border-radius: 0.5rem;
-      background: white;
+      border: 1px solid hsl(214.3 31.8% 91.4%);
+      border-radius: calc(0.5rem - 2px);
+      background: hsl(0 0% 100%);
       font-size: 0.875rem;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       cursor: pointer;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s ease;
     }
     
     .thrivestack-currency-select:hover {
-      border-color: #3b82f6;
+      border-color: hsl(217.2 91.2% 59.8%);
     }
     
     .thrivestack-billing-toggle {
@@ -216,21 +215,21 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
     }
     
     .thrivestack-switch {
       position: relative;
       width: 44px;
       height: 24px;
-      background: #e2e8f0;
+      background: hsl(210 40% 96.1%);
       border-radius: 12px;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: background-color 0.2s ease;
     }
     
     .thrivestack-switch.active {
-      background: #3b82f6;
+      background: hsl(221.2 83.2% 53.3%);
     }
     
     .thrivestack-switch-thumb {
@@ -239,9 +238,9 @@
       left: 2px;
       width: 20px;
       height: 20px;
-      background: white;
+      background: hsl(0 0% 100%);
       border-radius: 10px;
-      transition: transform 0.2s;
+      transition: transform 0.2s ease;
     }
     
     .thrivestack-switch.active .thrivestack-switch-thumb {
@@ -249,8 +248,8 @@
     }
     
     .thrivestack-badge {
-      background: #dcfce7;
-      color: #166534;
+      background: hsl(142.1 76.2% 36.3% / 0.1);
+      color: hsl(142.1 70.6% 45.3%);
       padding: 0.25rem 0.75rem;
       border-radius: 9999px;
       font-size: 0.75rem;
@@ -263,43 +262,44 @@
     }
 
     .thrivestack-comparison-title {
-      font-size: 3rem;
+      font-size: clamp(2rem, 3vw, 3rem);
       font-weight: 700;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       margin-bottom: 1rem;
     }
 
     .thrivestack-comparison-subtitle {
       font-size: 1.25rem;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
       max-width: 32rem;
       margin: 0 auto 2rem;
     }
 
     .thrivestack-comparison-button {
-      border: 1px solid #d1d5db;
-      background: white;
-      color: #111827;
+      border: 1px solid hsl(214.3 31.8% 91.4%);
+      background: hsl(0 0% 100%);
+      color: hsl(222.2 47.4% 11.2%);
       padding: 0.75rem 2rem;
-      font-size: 1.125rem;
-      border-radius: 0.375rem;
+      font-size: 1rem;
+      border-radius: calc(0.5rem - 2px);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
       text-decoration: none;
       display: inline-block;
       margin-bottom: 3rem;
     }
 
     .thrivestack-comparison-button:hover {
-      border-color: #9ca3af;
-      background: #f9fafb;
+      border-color: hsl(217.2 91.2% 59.8%);
+      background: hsl(210 40% 98%);
     }
 
     .thrivestack-faq-section {
       max-width: 64rem;
       margin: 0 auto;
-      background: #f9fafb;
-      border-radius: 0.5rem;
+      background: hsl(210 40% 98%);
+      border: 1px solid hsl(214.3 31.8% 91.4%);
+      border-radius: 0.75rem;
       padding: 2rem;
     }
 
@@ -311,32 +311,32 @@
     }
 
     .thrivestack-faq-title {
-      font-size: 3rem;
+      font-size: clamp(1.875rem, 2.5vw, 2.25rem);
       font-weight: 700;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       margin-bottom: 0.5rem;
     }
 
     .thrivestack-faq-accent {
       width: 4rem;
       height: 0.25rem;
-      background: #7c3aed;
+      background: hsl(262.1 83.3% 57.8%);
       margin-bottom: 1rem;
     }
 
     .thrivestack-faq-cta {
-      background: #7c3aed;
-      color: white;
+      background: hsl(262.1 83.3% 57.8%);
+      color: hsl(210 40% 98%);
       padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
+      border-radius: calc(0.5rem - 2px);
       font-weight: 600;
       cursor: pointer;
       border: none;
-      transition: background-color 0.2s;
+      transition: background-color 0.2s ease;
     }
 
     .thrivestack-faq-cta:hover {
-      background: #6d28d9;
+      background: hsl(262.1 83.3% 50%);
     }
 
     .thrivestack-faq-list {
@@ -346,9 +346,9 @@
     }
 
     .thrivestack-faq-item {
-      background: white;
-      border-radius: 0.5rem;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      background: hsl(0 0% 100%);
+      border: 1px solid hsl(214.3 31.8% 91.4%);
+      border-radius: calc(0.5rem - 2px);
     }
 
     .thrivestack-faq-question {
@@ -359,18 +359,18 @@
       border: none;
       font-size: 1rem;
       font-weight: 500;
-      color: #374151;
+      color: hsl(222.2 47.4% 11.2%);
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: background-color 0.2s ease;
     }
 
     .thrivestack-faq-question:hover {
-      background: #f9fafb;
+      background: hsl(210 40% 98%);
     }
 
     .thrivestack-faq-answer {
       padding: 0 1.5rem 1rem;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
       white-space: pre-line;
       display: none;
     }
@@ -383,37 +383,37 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 2rem;
-      max-width: 80rem;
+      max-width: 64rem;
       margin: 0 auto 5rem;
     }
     
     .thrivestack-card {
-      background: white;
-      border-radius: 1rem;
+      background: hsl(0 0% 100%);
+      border-radius: 0.75rem;
       padding: 2rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      border: 2px solid #e2e8f0;
-      transition: box-shadow 0.2s;
+      border: 1px solid hsl(214.3 31.8% 91.4%);
+      transition: all 0.2s ease;
       position: relative;
       display: flex;
       flex-direction: column;
     }
     
     .thrivestack-card.featured {
-      border-color: #bfdbfe;
+      border-color: hsl(217.2 91.2% 59.8%);
+      box-shadow: 0 4px 6px -1px hsl(221.2 83.2% 53.3% / 0.1);
     }
     
     .thrivestack-card:hover {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 15px -3px hsl(222.2 84% 4.9% / 0.1);
     }
     
     .thrivestack-card-badge {
       position: absolute;
-      top: -1rem;
+      top: -0.75rem;
       left: 50%;
       transform: translateX(-50%);
-      background: #2563eb;
-      color: white;
+      background: hsl(221.2 83.2% 53.3%);
+      color: hsl(210 40% 98%);
       padding: 0.5rem 1.5rem;
       border-radius: 9999px;
       font-size: 0.875rem;
@@ -428,26 +428,26 @@
     .thrivestack-card-title {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       margin-bottom: 1rem;
     }
     
     .thrivestack-price {
       font-size: 2.5rem;
       font-weight: 700;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       margin-bottom: 0.5rem;
     }
     
     .thrivestack-price-period {
       font-size: 1rem;
       font-weight: 400;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
     }
     
     .thrivestack-price-note {
       font-size: 0.875rem;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
       margin-top: 0.5rem;
     }
     
@@ -458,7 +458,7 @@
     
     .thrivestack-features h4 {
       font-weight: 600;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       margin-bottom: 1rem;
     }
     
@@ -478,36 +478,36 @@
     .thrivestack-check {
       width: 1rem;
       height: 1rem;
-      color: #22c55e;
+      color: hsl(142.1 70.6% 45.3%);
       flex-shrink: 0;
       margin-top: 0.125rem;
     }
     
     .thrivestack-button {
-      background: #2563eb;
-      color: white;
+      background: hsl(221.2 83.2% 53.3%);
+      color: hsl(210 40% 98%);
       border: none;
       padding: 0.875rem 2rem;
-      border-radius: 0.5rem;
+      border-radius: calc(0.5rem - 2px);
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: background-color 0.2s ease;
       text-decoration: none;
       display: inline-block;
       text-align: center;
     }
     
     .thrivestack-button:hover {
-      background: #1d4ed8;
+      background: hsl(221.2 83.2% 47%);
     }
     
     .thrivestack-button.secondary {
-      background: #0f172a;
+      background: hsl(222.2 84% 4.9%);
     }
     
     .thrivestack-button.secondary:hover {
-      background: #334155;
+      background: hsl(222.2 47.4% 11.2%);
     }
     
     .thrivestack-calculator {
@@ -523,7 +523,7 @@
     .thrivestack-calculator-title {
       font-size: 2rem;
       font-weight: 700;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       margin-bottom: 1rem;
     }
 
@@ -539,7 +539,7 @@
     .thrivestack-calculator-controls h3 {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       margin: 0;
     }
 
@@ -561,13 +561,13 @@
     .thrivestack-mtu-count {
       font-size: 2.5rem;
       font-weight: 700;
-      color: #2563eb;
+      color: hsl(221.2 83.2% 53.3%);
       margin-bottom: 0.25rem;
     }
     
     .thrivestack-mtu-label {
       font-size: 0.75rem;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -575,20 +575,20 @@
     .thrivestack-price-display {
       font-size: 3rem;
       font-weight: 700;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       margin-bottom: 0.25rem;
     }
     
     .thrivestack-price-label {
       font-size: 0.75rem;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
     
     .thrivestack-per-mtu {
       font-size: 1rem;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
     }
     
     .thrivestack-slider-container {
@@ -599,7 +599,7 @@
     .thrivestack-slider {
       width: 100%;
       height: 6px;
-      background: #e2e8f0;
+      background: hsl(210 40% 96.1%);
       border-radius: 3px;
       outline: none;
       cursor: pointer;
@@ -610,7 +610,7 @@
       -webkit-appearance: none;
       width: 20px;
       height: 20px;
-      background: #2563eb;
+      background: hsl(221.2 83.2% 53.3%);
       border-radius: 50%;
       cursor: pointer;
     }
@@ -618,7 +618,7 @@
     .thrivestack-slider::-moz-range-thumb {
       width: 20px;
       height: 20px;
-      background: #2563eb;
+      background: hsl(221.2 83.2% 53.3%);
       border-radius: 50%;
       cursor: pointer;
       border: none;
@@ -633,14 +633,14 @@
     
     .thrivestack-slider-marker {
       font-size: 0.75rem;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
       text-align: center;
     }
     
     .thrivestack-addons {
-      background: white;
-      border: 1px solid #bfdbfe;
-      border-radius: 1rem;
+      background: hsl(0 0% 100%);
+      border: 1px solid hsl(217.2 91.2% 59.8%);
+      border-radius: 0.75rem;
       padding: 1.5rem;
       margin: 2rem 0;
     }
@@ -648,28 +648,28 @@
     .thrivestack-addons-header {
       display: flex;
       align-items: center;
-      justify-content: between;
+      justify-content: space-between;
       margin-bottom: 1rem;
       cursor: pointer;
       padding: 0.5rem;
-      border-radius: 0.5rem;
-      transition: background-color 0.2s;
+      border-radius: calc(0.5rem - 2px);
+      transition: background-color 0.2s ease;
     }
     
     .thrivestack-addons-header:hover {
-      background: #f8fafc;
+      background: hsl(210 40% 98%);
     }
     
     .thrivestack-addons-title {
       font-size: 1.125rem;
       font-weight: 600;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       margin: 0;
     }
     
     .thrivestack-addons-subtitle {
       font-size: 0.875rem;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
       margin: 0.25rem 0 0 0;
     }
     
@@ -683,8 +683,8 @@
     }
     
     .thrivestack-addon-item {
-      border: 1px solid #e2e8f0;
-      border-radius: 0.5rem;
+      border: 1px solid hsl(214.3 31.8% 91.4%);
+      border-radius: calc(0.5rem - 2px);
       padding: 1rem;
       margin-bottom: 1rem;
     }
@@ -699,7 +699,7 @@
     .thrivestack-checkbox {
       width: 1rem;
       height: 1rem;
-      accent-color: #2563eb;
+      accent-color: hsl(221.2 83.2% 53.3%);
       cursor: pointer;
     }
     
@@ -717,19 +717,19 @@
     .thrivestack-addon-name {
       font-size: 0.875rem;
       font-weight: 500;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       cursor: pointer;
     }
     
     .thrivestack-addon-price {
       font-size: 0.875rem;
       font-weight: 600;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
     }
     
     .thrivestack-addon-description {
       font-size: 0.75rem;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
       line-height: 1.4;
     }
     
@@ -740,14 +740,14 @@
     
     .thrivestack-addon-input {
       padding: 0.5rem;
-      border: 1px solid #e2e8f0;
-      border-radius: 0.25rem;
+      border: 1px solid hsl(214.3 31.8% 91.4%);
+      border-radius: calc(0.5rem - 2px);
       width: 8rem;
       margin-right: 0.5rem;
     }
     
     .thrivestack-addons-total {
-      border-top: 1px solid #e2e8f0;
+      border-top: 1px solid hsl(214.3 31.8% 91.4%);
       padding-top: 1rem;
       margin-top: 1rem;
       display: flex;
@@ -756,9 +756,9 @@
     }
     
     .thrivestack-summary {
-      background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
-      border: 2px solid #bfdbfe;
-      border-radius: 1rem;
+      background: linear-gradient(135deg, hsl(214 100% 97%) 0%, hsl(221 100% 97%) 100%);
+      border: 2px solid hsl(217.2 91.2% 59.8%);
+      border-radius: 0.75rem;
       padding: 2rem;
       margin-top: 2rem;
     }
@@ -766,7 +766,7 @@
     .thrivestack-summary-title {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       margin-bottom: 1rem;
       text-align: center;
     }
@@ -774,14 +774,14 @@
     .thrivestack-summary-price {
       font-size: 3rem;
       font-weight: 700;
-      color: #2563eb;
+      color: hsl(221.2 83.2% 53.3%);
       text-align: center;
       margin-bottom: 0.5rem;
     }
     
     .thrivestack-summary-period {
       font-size: 1rem;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
       text-align: center;
       margin-bottom: 2rem;
     }
@@ -792,12 +792,12 @@
       gap: 1.5rem;
       margin-bottom: 2rem;
       padding-top: 1.5rem;
-      border-top: 1px solid #cbd5e1;
+      border-top: 1px solid hsl(214.3 31.8% 91.4%);
     }
     
     .thrivestack-summary-section h4 {
       font-weight: 600;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
       margin-bottom: 0.75rem;
     }
     
@@ -809,42 +809,42 @@
     }
     
     .thrivestack-summary-row span:first-child {
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
     }
     
     .thrivestack-summary-row span:last-child {
       font-weight: 600;
-      color: #0f172a;
+      color: hsl(222.2 84% 4.9%);
     }
     
     .thrivestack-cta {
       text-align: center;
       padding-top: 1.5rem;
-      border-top: 1px solid #cbd5e1;
+      border-top: 1px solid hsl(214.3 31.8% 91.4%);
     }
     
     .thrivestack-cta-button {
-      background: #2563eb;
-      color: white;
+      background: hsl(221.2 83.2% 53.3%);
+      color: hsl(210 40% 98%);
       border: none;
       padding: 1rem 2rem;
-      border-radius: 0.5rem;
+      border-radius: calc(0.5rem - 2px);
       font-size: 1.125rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px 0 hsl(222.2 84% 4.9% / 0.1);
       margin-bottom: 0.75rem;
     }
     
     .thrivestack-cta-button:hover {
-      background: #1d4ed8;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      background: hsl(221.2 83.2% 47%);
+      box-shadow: 0 4px 6px -1px hsl(222.2 84% 4.9% / 0.1);
     }
     
     .thrivestack-cta-note {
       font-size: 0.875rem;
-      color: #64748b;
+      color: hsl(215.4 16.3% 46.9%);
     }
     
     .thrivestack-chevron {
@@ -853,7 +853,7 @@
       stroke: currentColor;
       stroke-width: 2;
       fill: none;
-      transition: transform 0.2s;
+      transition: transform 0.2s ease;
     }
     
     .thrivestack-chevron.open {
@@ -871,7 +871,7 @@
       }
       
       .thrivestack-hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
       }
       
       .thrivestack-price-display {
@@ -894,11 +894,11 @@
       }
 
       .thrivestack-comparison-title {
-        font-size: 2rem;
+        font-size: 1.875rem;
       }
 
       .thrivestack-faq-title {
-        font-size: 2rem;
+        font-size: 1.875rem;
       }
     }
   `;
@@ -975,11 +975,11 @@
 
             <!-- Billing Toggle -->
             <div class="thrivestack-billing-toggle">
-              <span class="${!this.isAnnual ? 'font-weight: 600; color: #0f172a;' : 'color: #64748b;'}" style="font-size: 0.875rem;">Monthly</span>
+              <span style="font-size: 0.875rem; ${!this.isAnnual ? 'font-weight: 600; color: hsl(222.2 84% 4.9%);' : 'color: hsl(215.4 16.3% 46.9%);'}">Monthly</span>
               <div class="thrivestack-switch ${this.isAnnual ? 'active' : ''}" id="billing-switch">
                 <div class="thrivestack-switch-thumb"></div>
               </div>
-              <span class="${this.isAnnual ? 'font-weight: 600; color: #0f172a;' : 'color: #64748b;'}" style="font-size: 0.875rem;">Pay Annually</span>
+              <span style="font-size: 0.875rem; ${this.isAnnual ? 'font-weight: 600; color: hsl(222.2 84% 4.9%);' : 'color: hsl(215.4 16.3% 46.9%);'}">Pay Annually</span>
               <span class="thrivestack-badge">Save 20%</span>
             </div>
 
@@ -1001,10 +1001,10 @@
                 </div>
 
                 <div class="thrivestack-features">
-                  <div style="text-align: center; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0; margin-bottom: 1rem;">
-                    <div style="font-size: 0.875rem; color: #64748b;">
+                  <div style="text-align: center; padding-bottom: 1rem; border-bottom: 1px solid hsl(214.3 31.8% 91.4%); margin-bottom: 1rem;">
+                    <div style="font-size: 0.875rem; color: hsl(215.4 16.3% 46.9%);">
                       Includes 1,500 MTUs • 
-                      <button id="scroll-to-calculator" style="color: #2563eb; text-decoration: underline; background: none; border: none; cursor: pointer;">
+                      <button id="scroll-to-calculator" style="color: hsl(221.2 83.2% 53.3%); text-decoration: underline; background: none; border: none; cursor: pointer;">
                         Calculate your price by MTU count
                       </button>
                     </div>
@@ -1026,7 +1026,7 @@
                         <svg class="thrivestack-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                           <polyline points="20,6 9,17 4,12"></polyline>
                         </svg>
-                        <span style="font-size: 0.875rem; color: #374151;">${feature}</span>
+                        <span style="font-size: 0.875rem; color: hsl(222.2 47.4% 11.2%);">${feature}</span>
                       </li>
                     `).join('')}
                   </ul>
@@ -1048,8 +1048,8 @@
                 </div>
 
                 <div class="thrivestack-features">
-                  <div style="text-align: center; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0; margin-bottom: 1rem;">
-                    <div style="font-size: 0.875rem; color: #64748b;">Contact us for custom pricing</div>
+                  <div style="text-align: center; padding-bottom: 1rem; border-bottom: 1px solid hsl(214.3 31.8% 91.4%); margin-bottom: 1rem;">
+                    <div style="font-size: 0.875rem; color: hsl(215.4 16.3% 46.9%);">Contact us for custom pricing</div>
                   </div>
 
                   <h4>Includes:</h4>
@@ -1068,7 +1068,7 @@
                         <svg class="thrivestack-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                           <polyline points="20,6 9,17 4,12"></polyline>
                         </svg>
-                        <span style="font-size: 0.875rem; color: #374151;">${feature}</span>
+                        <span style="font-size: 0.875rem; color: hsl(222.2 47.4% 11.2%);">${feature}</span>
                       </li>
                     `).join('')}
                   </ul>
@@ -1098,18 +1098,18 @@
                     
                     <!-- Annual Toggle -->
                     <div class="thrivestack-billing-toggle">
-                      <span class="${!this.isAnnual ? 'font-weight: 600; color: #0f172a;' : 'color: #64748b;'}" style="font-size: 0.875rem;">Monthly</span>
+                      <span style="font-size: 0.875rem; ${!this.isAnnual ? 'font-weight: 600; color: hsl(222.2 84% 4.9%);' : 'color: hsl(215.4 16.3% 46.9%);'}">Monthly</span>
                       <div class="thrivestack-switch ${this.isAnnual ? 'active' : ''}" id="calculator-billing-switch">
                         <div class="thrivestack-switch-thumb"></div>
                       </div>
-                      <span class="${this.isAnnual ? 'font-weight: 600; color: #0f172a;' : 'color: #64748b;'}" style="font-size: 0.875rem;">Pay Annually</span>
+                      <span style="font-size: 0.875rem; ${this.isAnnual ? 'font-weight: 600; color: hsl(222.2 84% 4.9%);' : 'color: hsl(215.4 16.3% 46.9%);'}">Pay Annually</span>
                       <span class="thrivestack-badge">Save 20%</span>
                     </div>
                   </div>
                 </div>
 
                 <div class="thrivestack-calculator-header">
-                  <p style="color: #64748b; margin: 0;">Calculate your exact pricing based on Monthly Tracked Users (MTU)</p>
+                  <p style="color: hsl(215.4 16.3% 46.9%); margin: 0;">Calculate your exact pricing based on Monthly Tracked Users (MTU)</p>
                 </div>
 
                 <!-- MTU Display -->
@@ -1195,7 +1195,7 @@
                         
                         ${key === 'abuseDetection' && enabled ? `
                           <div class="thrivestack-addon-extra">
-                            <label style="font-size: 0.875rem; color: #374151; margin-bottom: 0.5rem; display: block;">
+                            <label style="font-size: 0.875rem; color: hsl(222.2 47.4% 11.2%); margin-bottom: 0.5rem; display: block;">
                               Additional detections needed (beyond ${addon.includedDetections.toLocaleString()})
                             </label>
                             <div style="display: flex; align-items: center; gap: 0.5rem;">
@@ -1207,12 +1207,12 @@
                                 value="${this.addOns.abuseDetection.additionalDetections}"
                                 placeholder="0"
                               />
-                              <span style="font-size: 0.875rem; color: #64748b;">
+                              <span style="font-size: 0.875rem; color: hsl(215.4 16.3% 46.9%);">
                                 × ${formatCurrency(addon.pricePerAdditionalDetection, this.currency)} each
                               </span>
                             </div>
                             ${this.addOns.abuseDetection.additionalDetections > 0 ? `
-                              <p style="font-size: 0.75rem; color: #64748b; margin-top: 0.5rem;">
+                              <p style="font-size: 0.75rem; color: hsl(215.4 16.3% 46.9%); margin-top: 0.5rem;">
                                 Additional cost: ${formatCurrency(additionalCost, this.currency)}/mo
                               </p>
                             ` : ''}
@@ -1224,8 +1224,8 @@
                   
                   ${addOnTotal > 0 ? `
                     <div class="thrivestack-addons-total">
-                      <span style="font-size: 1.125rem; font-weight: 600; color: #0f172a;">Total Add-ons Cost:</span>
-                      <span style="font-size: 1.125rem; font-weight: 700; color: #2563eb;">${formatCurrency(addOnTotal, this.currency)}/mo</span>
+                      <span style="font-size: 1.125rem; font-weight: 600; color: hsl(222.2 84% 4.9%);">Total Add-ons Cost:</span>
+                      <span style="font-size: 1.125rem; font-weight: 700; color: hsl(221.2 83.2% 53.3%);">${formatCurrency(addOnTotal, this.currency)}/mo</span>
                     </div>
                   ` : ''}
                 </div>
@@ -1237,7 +1237,7 @@
                 <div class="thrivestack-summary-price">${monthlyTotal}</div>
                 <div class="thrivestack-summary-period">
                   ${this.isAnnual ? 'per month (billed annually)' : 'per month'}
-                  ${this.isAnnual && addOnTotal > 0 ? `<br><span style="color: #22c55e;">Save ${formatCurrency(calculation.annualSavings + (addOnTotal * 12 * 0.2), this.currency)} annually (20% discount applied)</span>` : ''}
+                  ${this.isAnnual && addOnTotal > 0 ? `<br><span style="color: hsl(142.1 70.6% 45.3%);">Save ${formatCurrency(calculation.annualSavings + (addOnTotal * 12 * 0.2), this.currency)} annually (20% discount applied)</span>` : ''}
                 </div>
 
                 <div class="thrivestack-summary-details">
@@ -1270,7 +1270,7 @@
                       <span>${this.isAnnual ? 'Annual (-20%)' : 'Monthly'}</span>
                     </div>
                     ${calculation.tier.discount ? `
-                      <div class="thrivestack-summary-row" style="color: #22c55e;">
+                      <div class="thrivestack-summary-row" style="color: hsl(142.1 70.6% 45.3%);">
                         <span>Tier Discount:</span>
                         <span>${calculation.tier.discount}%</span>
                       </div>
