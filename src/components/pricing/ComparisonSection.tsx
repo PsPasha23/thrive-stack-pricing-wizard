@@ -259,7 +259,7 @@ const ComparisonSection: React.FC = () => {
                   </div>
                 }
                 triggerClassName="w-full"
-                contentClassName="text-slate-600 whitespace-pre-line px-6 pb-4 pt-0"
+                contentInnerClassName="text-slate-600 whitespace-pre-line px-6 pb-4 pt-0"
               >
                 {faq.answer}
               </Collapsible>

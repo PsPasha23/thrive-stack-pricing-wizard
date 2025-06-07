@@ -34,6 +34,27 @@
     { min: 275000, max: 300000, pricePerMTU: 0.01176, discount: 0 }
   ];
 
+  // Add-on configurations
+  const ADD_ONS = {
+    abuseDetection: {
+      name: 'Abuse Detection',
+      description: 'Protect your analytics from spam and abuse with our advanced detection system. Automatically identify and filter out suspicious traffic.',
+      basePrice: 25,
+      includedDetections: 500,
+      pricePerAdditionalDetection: 0.02
+    },
+    economicBuyer: {
+      name: 'Economic Buyer',
+      description: 'Automatically identify up to 500 key decision-makers in an organization with the authority to approve expenditures and make financial decisions.',
+      basePrice: 25
+    },
+    dataRetention: {
+      name: 'Data Retention',
+      description: 'Access and analyze your data for up to one year with our extended retention add-on. Perfect for compliance and long-term analysis.',
+      basePrice: 25
+    }
+  };
+
   // Utility functions
   function formatCurrency(amount, currency) {
     const config = currencyConfigs[currency];
@@ -61,6 +82,20 @@
     return mtu.toString();
   }
 
+  function calculateAddOnTotal(addOns) {
+    let total = 0;
+    if (addOns.abuseDetection.enabled) {
+      total += ADD_ONS.abuseDetection.basePrice + (addOns.abuseDetection.additionalDetections * ADD_ONS.abuseDetection.pricePerAdditionalDetection);
+    }
+    if (addOns.economicBuyer.enabled) {
+      total += ADD_ONS.economicBuyer.basePrice;
+    }
+    if (addOns.dataRetention.enabled) {
+      total += ADD_ONS.dataRetention.basePrice;
+    }
+    return total;
+  }
+
   // CSS Styles
   const styles = `
     .thrivestack-pricing {
@@ -71,26 +106,6 @@
       min-height: 100vh;
       margin: 0;
       padding: 0;
-    }
-    
-    .thrivestack-header {
-      background: white;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    }
-    
-    .thrivestack-header-content {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .thrivestack-logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #0f172a;
     }
     
     .thrivestack-container {
@@ -422,6 +437,124 @@
       text-align: center;
     }
     
+    .thrivestack-addons {
+      background: white;
+      border: 1px solid #bfdbfe;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .thrivestack-addons-header {
+      display: flex;
+      align-items: center;
+      justify-content: between;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.2s;
+    }
+    
+    .thrivestack-addons-header:hover {
+      background: #f8fafc;
+    }
+    
+    .thrivestack-addons-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin: 0;
+    }
+    
+    .thrivestack-addons-subtitle {
+      font-size: 0.875rem;
+      color: #64748b;
+      margin: 0.25rem 0 0 0;
+    }
+    
+    .thrivestack-addons-content {
+      display: none;
+      padding-top: 1rem;
+    }
+    
+    .thrivestack-addons-content.open {
+      display: block;
+    }
+    
+    .thrivestack-addon-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .thrivestack-addon-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .thrivestack-checkbox {
+      width: 1rem;
+      height: 1rem;
+      accent-color: #2563eb;
+      cursor: pointer;
+    }
+    
+    .thrivestack-addon-details {
+      flex: 1;
+    }
+    
+    .thrivestack-addon-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .thrivestack-addon-name {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #0f172a;
+      cursor: pointer;
+    }
+    
+    .thrivestack-addon-price {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    
+    .thrivestack-addon-description {
+      font-size: 0.75rem;
+      color: #64748b;
+      line-height: 1.4;
+    }
+    
+    .thrivestack-addon-extra {
+      margin-top: 0.75rem;
+      margin-left: 1.75rem;
+    }
+    
+    .thrivestack-addon-input {
+      padding: 0.5rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.25rem;
+      width: 8rem;
+      margin-right: 0.5rem;
+    }
+    
+    .thrivestack-addons-total {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 1rem;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
     .thrivestack-summary {
       background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
       border: 2px solid #bfdbfe;
@@ -514,6 +647,19 @@
       color: #64748b;
     }
     
+    .thrivestack-chevron {
+      width: 1rem;
+      height: 1rem;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      transition: transform 0.2s;
+    }
+    
+    .thrivestack-chevron.open {
+      transform: rotate(180deg);
+    }
+    
     @media (max-width: 768px) {
       .thrivestack-plans {
         grid-template-columns: 1fr;
@@ -545,7 +691,12 @@
       this.currency = 'USD';
       this.isAnnual = false;
       this.selectedMTUIndex = 0;
-      this.addOnTotal = 0;
+      this.addOns = {
+        abuseDetection: { enabled: false, additionalDetections: 0 },
+        economicBuyer: { enabled: false },
+        dataRetention: { enabled: false }
+      };
+      this.addOnsOpen = false;
       
       this.init();
     }
@@ -576,20 +727,14 @@
 
       const selectedMTU = MTU_BREAKPOINTS[this.selectedMTUIndex];
       const calculation = calculateMTUPricing(selectedMTU, this.isAnnual);
-      const totalMonthlyWithAddOns = calculation.monthlyTotal + this.addOnTotal;
-      const totalAnnualWithAddOns = calculation.annualTotal + this.addOnTotal;
+      const addOnTotal = calculateAddOnTotal(this.addOns);
+      const totalMonthlyWithAddOns = calculation.monthlyTotal + addOnTotal;
+      const totalAnnualWithAddOns = calculation.annualTotal + addOnTotal;
       const monthlyTotal = formatCurrency(this.isAnnual ? totalAnnualWithAddOns : totalMonthlyWithAddOns, this.currency);
       const perMTURate = formatCurrency(calculation.tier.pricePerMTU, this.currency);
 
       container.innerHTML = `
         <div class="thrivestack-pricing">
-          <!-- Header -->
-          <div class="thrivestack-header">
-            <div class="thrivestack-header-content">
-              <div class="thrivestack-logo">ThriveStack</div>
-            </div>
-          </div>
-
           <!-- Main Content -->
           <div class="thrivestack-container">
             <!-- Hero Section -->
@@ -614,7 +759,7 @@
               <div class="thrivestack-switch ${this.isAnnual ? 'active' : ''}" id="billing-switch">
                 <div class="thrivestack-switch-thumb"></div>
               </div>
-              <span class="${this.isAnnual ? 'font-weight: 600; color: #0f172a;' : 'color: #64748b;'}" style="font-size: 0.875rem;">Annual</span>
+              <span class="${this.isAnnual ? 'font-weight: 600; color: #0f172a;' : 'color: #64748b;'}" style="font-size: 0.875rem;">Pay Annually</span>
               <span class="thrivestack-badge">Save 20%</span>
             </div>
 
@@ -762,12 +907,93 @@
                 </div>
               </div>
 
+              <!-- Add-ons Calculator -->
+              <div class="thrivestack-addons">
+                <div class="thrivestack-addons-header" id="addons-toggle">
+                  <div style="flex: 1;">
+                    <h3 class="thrivestack-addons-title">Add-ons Calculator</h3>
+                    <p class="thrivestack-addons-subtitle">Select the add-ons you need for your plan</p>
+                  </div>
+                  <svg class="thrivestack-chevron ${this.addOnsOpen ? 'open' : ''}" viewBox="0 0 24 24">
+                    <polyline points="6,9 12,15 18,9"></polyline>
+                  </svg>
+                </div>
+                
+                <div class="thrivestack-addons-content ${this.addOnsOpen ? 'open' : ''}" id="addons-content">
+                  ${Object.entries(ADD_ONS).map(([key, addon]) => {
+                    const enabled = this.addOns[key].enabled;
+                    const additionalCost = key === 'abuseDetection' && enabled ? 
+                      this.addOns.abuseDetection.additionalDetections * addon.pricePerAdditionalDetection : 0;
+                    
+                    return `
+                      <div class="thrivestack-addon-item">
+                        <div class="thrivestack-addon-header">
+                          <input 
+                            type="checkbox" 
+                            class="thrivestack-checkbox" 
+                            id="addon-${key}"
+                            ${enabled ? 'checked' : ''}
+                          />
+                          <div class="thrivestack-addon-details">
+                            <div class="thrivestack-addon-title">
+                              <label for="addon-${key}" class="thrivestack-addon-name">${addon.name}</label>
+                              <div class="thrivestack-addon-price">
+                                ${formatCurrency(addon.basePrice, this.currency)}/mo
+                                ${additionalCost > 0 ? ` + ${formatCurrency(additionalCost, this.currency)}` : ''}
+                              </div>
+                            </div>
+                            <p class="thrivestack-addon-description">
+                              ${addon.description}
+                              ${key === 'abuseDetection' ? `<br><small>Includes ${addon.includedDetections.toLocaleString()} detections</small>` : ''}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        ${key === 'abuseDetection' && enabled ? `
+                          <div class="thrivestack-addon-extra">
+                            <label style="font-size: 0.875rem; color: #374151; margin-bottom: 0.5rem; display: block;">
+                              Additional detections needed (beyond ${addon.includedDetections.toLocaleString()})
+                            </label>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                              <input 
+                                type="number" 
+                                class="thrivestack-addon-input" 
+                                id="additional-detections"
+                                min="0" 
+                                value="${this.addOns.abuseDetection.additionalDetections}"
+                                placeholder="0"
+                              />
+                              <span style="font-size: 0.875rem; color: #64748b;">
+                                × ${formatCurrency(addon.pricePerAdditionalDetection, this.currency)} each
+                              </span>
+                            </div>
+                            ${this.addOns.abuseDetection.additionalDetections > 0 ? `
+                              <p style="font-size: 0.75rem; color: #64748b; margin-top: 0.5rem;">
+                                Additional cost: ${formatCurrency(additionalCost, this.currency)}/mo
+                              </p>
+                            ` : ''}
+                          </div>
+                        ` : ''}
+                      </div>
+                    `;
+                  }).join('')}
+                  
+                  ${addOnTotal > 0 ? `
+                    <div class="thrivestack-addons-total">
+                      <span style="font-size: 1.125rem; font-weight: 600; color: #0f172a;">Total Add-ons Cost:</span>
+                      <span style="font-size: 1.125rem; font-weight: 700; color: #2563eb;">${formatCurrency(addOnTotal, this.currency)}/mo</span>
+                    </div>
+                  ` : ''}
+                </div>
+              </div>
+
               <!-- Summary -->
               <div class="thrivestack-summary">
                 <div class="thrivestack-summary-title">Your Total Price</div>
                 <div class="thrivestack-summary-price">${monthlyTotal}</div>
                 <div class="thrivestack-summary-period">
                   ${this.isAnnual ? 'per month (billed annually)' : 'per month'}
+                  ${this.isAnnual && addOnTotal > 0 ? `<br><span style="color: #22c55e;">Save ${formatCurrency(calculation.annualSavings + (addOnTotal * 12 * 0.2), this.currency)} annually (20% discount applied)</span>` : ''}
                 </div>
 
                 <div class="thrivestack-summary-details">
@@ -789,6 +1015,12 @@
 
                   <div class="thrivestack-summary-section">
                     <h4>Summary</h4>
+                    ${addOnTotal > 0 ? `
+                      <div class="thrivestack-summary-row">
+                        <span>Add-ons:</span>
+                        <span>${formatCurrency(addOnTotal, this.currency)}/mo</span>
+                      </div>
+                    ` : ''}
                     <div class="thrivestack-summary-row">
                       <span>Billing:</span>
                       <span>${this.isAnnual ? 'Annual (-20%)' : 'Monthly'}</span>
@@ -846,6 +1078,42 @@
       if (mtuSlider) {
         mtuSlider.addEventListener('input', (e) => {
           this.selectedMTUIndex = parseInt(e.target.value);
+          this.render();
+          this.bindEvents();
+        });
+      }
+
+      // Add-ons toggle
+      const addonsToggle = document.getElementById('addons-toggle');
+      if (addonsToggle) {
+        addonsToggle.addEventListener('click', () => {
+          this.addOnsOpen = !this.addOnsOpen;
+          this.render();
+          this.bindEvents();
+        });
+      }
+
+      // Add-on checkboxes
+      Object.keys(ADD_ONS).forEach(key => {
+        const checkbox = document.getElementById(`addon-${key}`);
+        if (checkbox) {
+          checkbox.addEventListener('change', (e) => {
+            this.addOns[key].enabled = e.target.checked;
+            if (!e.target.checked && key === 'abuseDetection') {
+              this.addOns.abuseDetection.additionalDetections = 0;
+            }
+            this.render();
+            this.bindEvents();
+          });
+        }
+      });
+
+      // Additional detections input
+      const additionalDetectionsInput = document.getElementById('additional-detections');
+      if (additionalDetectionsInput) {
+        additionalDetectionsInput.addEventListener('input', (e) => {
+          const value = parseInt(e.target.value) || 0;
+          this.addOns.abuseDetection.additionalDetections = Math.max(0, value);
           this.render();
           this.bindEvents();
         });
