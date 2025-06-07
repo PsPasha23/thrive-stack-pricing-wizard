@@ -55,6 +55,62 @@
     }
   };
 
+  // FAQ Data
+  const faqData = [
+    {
+      question: "What is ThriveStack Customer Analytics?",
+      answer: "ThriveStack Customer Analytics is a customer journey analytics platform designed to help Software product companies to track and optimize acquisition, activation, retention, monetization, and expansion. Unlike traditional product analytics tools, ThriveStack provides insights into customer growth, not just feature usage."
+    },
+    {
+      question: "How is ThriveStack different from MixPanel, Amplitude, or June?",
+      answer: "Most analytics tools track in-app events and feature usage, but they fail to connect the impact across marketing, onboarding, and monetization. ThriveStack helps you:\n\n✔️ Understand why users convert from free to paid\n✔️ Track the entire customer journey from acquisition to retention\n✔️ Know exactly why users upgrade and replicate success\n✔️ Identify churn risks before they happen and take action\n✔️ Measure viral growth & referrals to unlock organic expansion"
+    },
+    {
+      question: "Who is Customer Analytics for?",
+      answer: "Customer Analytics is essential for SaaS companies that need a full view of their customer journey to drive growth, retention, and monetization.\n\na. Growth Marketers → Measure marketing attribution & campaign effectiveness\nb. Product Managers → Improve activation, engagement & virality\nc. Revenue Teams → Optimize free-to-paid conversion\nd. Founders & CEOs → Get a single source of truth for growth"
+    },
+    {
+      question: "Do I need technical skills to use ThriveStack?",
+      answer: "No! ThriveStack is built for growth teams, not just developers and data scientists. We provide:\n\n🔹No-code integrations with your favorite SaaS tools\n🔹Pre-built reports & dashboards for instant insights\n🔹Automated insights so you don't have to dig through data"
+    },
+    {
+      question: "What can I track with ThriveStack?",
+      answer: "ThriveStack tracks the entire customer journey, including:\n\n✅ Marketing Attribution → Which campaigns drive signups?\n✅ Onboarding & Activation → Where do users drop off before engaging?\n✅ Free-to-Paid Conversion → Why do some users upgrade while others churn?\n✅ Retention & Expansion → How do engaged users turn into long-term customers?\n✅ Virality & Referrals → Who is bringing in more users & driving organic growth?"
+    },
+    {
+      question: "Does ThriveStack integrate with my existing tools?",
+      answer: "Yes! ThriveStack integrates with CRM, marketing, and product tools like:\n\n🔹 HubSpot, Salesforce, Segment (planned) - for marketing & sales\n🔹 With your product's Front-end and Backend systems - for product usage"
+    },
+    {
+      question: "How does ThriveStack measure free-to-paid conversion?",
+      answer: "We analyze user behavior before they upgrade, including:\n\na. What marketing channels influenced them to Signup\nb. What features they engage with\nc. How long it takes them to activate, upgrade\nd. What actions correlate with higher conversion rates\n\nThis lets you identify bottlenecks and optimize marketing campaigns, pricing, onboarding, and user flows."
+    },
+    {
+      question: "Is there a free plan?",
+      answer: "Yes! Our free plan includes:\n\n✅ Up to 10 Active users/month\n✅ Basic customer journey tracking\n✅ Key insights on free-to-paid conversion"
+    },
+    {
+      question: "Why does your billing use Monthly Active Users (MAUs) as opposed to Monthly Tracked Users (MTUs) by your competition?",
+      answer: "Our Competition is passing on the Storage and Compute costs by tracking MTUs. MAUs is the true measure of engagement and growth. We prefer to tilt towards helping your Product grow rather than nickel-and-dime you.\n\na. MTUs include all tracked users, even inactive ones.\nb. MAUs only count users who actively interact with the product.\nc. Billing by MTUs is nickel-and-diming you. MAUs are used for measuring real product adoption and retention.\n\ne.g. If 50,000 users have been tracked (but only 5,000 were active), the MTU is 50,000, MAUs is 5,000"
+    },
+    {
+      question: "Do I need a credit card to sign up?",
+      answer: "No! Our free plan lets you start tracking customers instantly—no credit card required."
+    },
+    {
+      question: "Can I migrate from Amplitude, Mixpanel, or another analytics tool?",
+      answer: "Yes! We offer easy setup for you to get started. And are considering API support to import historical data from existing platforms (planned)."
+    },
+    {
+      question: "How do I get support?",
+      answer: "We offer live chat, help docs, and onboarding support for all users. Enterprise plans include dedicated account managers and priority support."
+    },
+    {
+      question: "How do I set up ThriveStack?",
+      answer: "Setting up ThriveStack is fast and easy:\n\n1️⃣ Sign up for free (No credit card needed)\n2️⃣ Connect your data sources\n3️⃣ Get instant insights on your customer journey"
+    }
+  ];
+
   // Utility functions
   function formatCurrency(amount, currency) {
     const config = currencyConfigs[currency];
@@ -199,6 +255,128 @@
       border-radius: 9999px;
       font-size: 0.75rem;
       font-weight: 600;
+    }
+
+    .thrivestack-comparison-section {
+      text-align: center;
+      margin: 5rem 0;
+    }
+
+    .thrivestack-comparison-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 1rem;
+    }
+
+    .thrivestack-comparison-subtitle {
+      font-size: 1.25rem;
+      color: #64748b;
+      max-width: 32rem;
+      margin: 0 auto 2rem;
+    }
+
+    .thrivestack-comparison-button {
+      border: 1px solid #d1d5db;
+      background: white;
+      color: #111827;
+      padding: 0.75rem 2rem;
+      font-size: 1.125rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 3rem;
+    }
+
+    .thrivestack-comparison-button:hover {
+      border-color: #9ca3af;
+      background: #f9fafb;
+    }
+
+    .thrivestack-faq-section {
+      max-width: 64rem;
+      margin: 0 auto;
+      background: #f9fafb;
+      border-radius: 0.5rem;
+      padding: 2rem;
+    }
+
+    .thrivestack-faq-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .thrivestack-faq-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+
+    .thrivestack-faq-accent {
+      width: 4rem;
+      height: 0.25rem;
+      background: #7c3aed;
+      margin-bottom: 1rem;
+    }
+
+    .thrivestack-faq-cta {
+      background: #7c3aed;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.2s;
+    }
+
+    .thrivestack-faq-cta:hover {
+      background: #6d28d9;
+    }
+
+    .thrivestack-faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .thrivestack-faq-item {
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .thrivestack-faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 1rem 1.5rem;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #374151;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .thrivestack-faq-question:hover {
+      background: #f9fafb;
+    }
+
+    .thrivestack-faq-answer {
+      padding: 0 1.5rem 1rem;
+      color: #64748b;
+      white-space: pre-line;
+      display: none;
+    }
+
+    .thrivestack-faq-answer.open {
+      display: block;
     }
     
     .thrivestack-plans {
@@ -347,6 +525,28 @@
       font-weight: 700;
       color: #0f172a;
       margin-bottom: 1rem;
+    }
+
+    .thrivestack-calculator-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .thrivestack-calculator-controls h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0;
+    }
+
+    .thrivestack-controls-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
     
     .thrivestack-mtu-display {
@@ -681,6 +881,25 @@
       .thrivestack-summary-price {
         font-size: 2rem;
       }
+
+      .thrivestack-calculator-controls {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .thrivestack-faq-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .thrivestack-comparison-title {
+        font-size: 2rem;
+      }
+
+      .thrivestack-faq-title {
+        font-size: 2rem;
+      }
     }
   `;
 
@@ -697,6 +916,7 @@
         dataRetention: { enabled: false }
       };
       this.addOnsOpen = false;
+      this.openFaqIndex = null;
       
       this.init();
     }
@@ -863,8 +1083,32 @@
             <!-- MTU Calculator -->
             <div id="mtu-calculator" class="thrivestack-calculator">
               <div class="thrivestack-card">
+                <div class="thrivestack-calculator-controls">
+                  <h3>MTU-Based Pricing Calculator</h3>
+                  <div class="thrivestack-controls-group">
+                    <!-- Currency Selector -->
+                    <div class="thrivestack-currency-selector">
+                      <select class="thrivestack-currency-select" id="calculator-currency-select">
+                        <option value="USD" ${this.currency === 'USD' ? 'selected' : ''}>USD ($)</option>
+                        <option value="EUR" ${this.currency === 'EUR' ? 'selected' : ''}>EUR (€)</option>
+                        <option value="GBP" ${this.currency === 'GBP' ? 'selected' : ''}>GBP (£)</option>
+                        <option value="INR" ${this.currency === 'INR' ? 'selected' : ''}>INR (₹)</option>
+                      </select>
+                    </div>
+                    
+                    <!-- Annual Toggle -->
+                    <div class="thrivestack-billing-toggle">
+                      <span class="${!this.isAnnual ? 'font-weight: 600; color: #0f172a;' : 'color: #64748b;'}" style="font-size: 0.875rem;">Monthly</span>
+                      <div class="thrivestack-switch ${this.isAnnual ? 'active' : ''}" id="calculator-billing-switch">
+                        <div class="thrivestack-switch-thumb"></div>
+                      </div>
+                      <span class="${this.isAnnual ? 'font-weight: 600; color: #0f172a;' : 'color: #64748b;'}" style="font-size: 0.875rem;">Pay Annually</span>
+                      <span class="thrivestack-badge">Save 20%</span>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="thrivestack-calculator-header">
-                  <div class="thrivestack-calculator-title">MTU-Based Pricing Calculator</div>
                   <p style="color: #64748b; margin: 0;">Calculate your exact pricing based on Monthly Tracked Users (MTU)</p>
                 </div>
 
@@ -1047,14 +1291,60 @@
                 </div>
               </div>
             </div>
+
+            <!-- Comparison Section -->
+            <div class="thrivestack-comparison-section">
+              <h2 class="thrivestack-comparison-title">How We Compare</h2>
+              <p class="thrivestack-comparison-subtitle">
+                See how ThriveStack stacks up against other analytics platforms in features and pricing.
+              </p>
+
+              <button 
+                class="thrivestack-comparison-button"
+                onclick="window.open('https://preview--thrive-stack-insights-calculator.lovable.app/', '_blank')"
+              >
+                Compare pricing with other analytics tools
+              </button>
+
+              <!-- FAQ Section -->
+              <div class="thrivestack-faq-section">
+                <div class="thrivestack-faq-header">
+                  <div>
+                    <h2 class="thrivestack-faq-title">Frequently Asked Questions</h2>
+                    <div class="thrivestack-faq-accent"></div>
+                  </div>
+                  <button 
+                    class="thrivestack-faq-cta"
+                    onclick="window.open('https://app.thrivestack.ai/auth/customer-analytics/sign-up', '_blank')"
+                  >
+                    Get started for free
+                  </button>
+                </div>
+
+                <div class="thrivestack-faq-list">
+                  ${faqData.map((faq, index) => `
+                    <div class="thrivestack-faq-item">
+                      <button class="thrivestack-faq-question" data-faq-index="${index}">
+                        ${faq.question}
+                      </button>
+                      <div class="thrivestack-faq-answer ${this.openFaqIndex === index ? 'open' : ''}">
+                        ${faq.answer}
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       `;
     }
 
     bindEvents() {
-      // Currency selector
+      // Currency selectors
       const currencySelect = document.getElementById('currency-select');
+      const calculatorCurrencySelect = document.getElementById('calculator-currency-select');
+      
       if (currencySelect) {
         currencySelect.addEventListener('change', (e) => {
           this.currency = e.target.value;
@@ -1063,10 +1353,28 @@
         });
       }
 
-      // Billing switch
+      if (calculatorCurrencySelect) {
+        calculatorCurrencySelect.addEventListener('change', (e) => {
+          this.currency = e.target.value;
+          this.render();
+          this.bindEvents();
+        });
+      }
+
+      // Billing switches
       const billingSwitch = document.getElementById('billing-switch');
+      const calculatorBillingSwitch = document.getElementById('calculator-billing-switch');
+      
       if (billingSwitch) {
         billingSwitch.addEventListener('click', () => {
+          this.isAnnual = !this.isAnnual;
+          this.render();
+          this.bindEvents();
+        });
+      }
+
+      if (calculatorBillingSwitch) {
+        calculatorBillingSwitch.addEventListener('click', () => {
           this.isAnnual = !this.isAnnual;
           this.render();
           this.bindEvents();
@@ -1118,6 +1426,17 @@
           this.bindEvents();
         });
       }
+
+      // FAQ toggles
+      const faqQuestions = document.querySelectorAll('[data-faq-index]');
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const index = parseInt(question.getAttribute('data-faq-index'));
+          this.openFaqIndex = this.openFaqIndex === index ? null : index;
+          this.render();
+          this.bindEvents();
+        });
+      });
 
       // Scroll to calculator
       const scrollButton = document.getElementById('scroll-to-calculator');
